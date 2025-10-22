@@ -2,12 +2,36 @@
 # -*- coding: utf-8 -*-
 
 from datetime import datetime
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import List
+from Product import Product
 
 @dataclass
 class Order:
     """
     Classe représentant une commande
+
+    Attributs
+        products: la liste des produits composant la commande
+        date: la date à laquelle la commande a été réalisée
+        status: l'état de la commande "finished" ou "ongoing"
     """
-    product_list: list
+
     date: datetime
+    status: str
+    line_orders: List[Product] = field(default_factory=list)
+
+    def add_line_order(self,product: Product) -> None:
+        self.line_orders.append(product)
+
+    def print_order(self) -> None:
+        """
+        Permet d'affichage de la liste des produits
+        """
+        if not self.line_orders:
+            print("Aucun produit enregistré")
+        else:
+            print("Voici votre commande :")
+            for product in self.line_orders:
+                print(f"- {product}")
+
