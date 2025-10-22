@@ -18,7 +18,7 @@ class Customer:
     lastname: str
     customers: ClassVar[List['Customer']] = []
 
-    def __init__(self, id_customer: int, firstname: str, lastname: str):
+    def __init__(self, id_customer: int, firstname: str, lastname: str) -> None:
         """
          Permet la création d'un client
         :param firstname: Prenom du client
@@ -29,22 +29,32 @@ class Customer:
         self.lastname = lastname
         Customer.customers.append(self)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """
         Permet de configurer l'affichage d'un client
         :return: Prenom et nom du client
         """
         return f"{self.firstname} {self.lastname}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         Permet de configurer l'affichage d'un client pour le développement
         :return: Prenom et nom du client
         """
         return f"Customer({self.id_customer}, {self.firstname}, {self.lastname})"
 
+
     @classmethod
-    def print_customers(cls):
+    def nb_customers(cls) -> int:
+        """
+        Permet de l'affichage du nombre de clients passés ce jour
+        :return: nombre de clients passés ce jour
+        """
+        return len(cls.customers)
+
+
+    @classmethod
+    def print_customers(cls) -> None:
         """
         Permet d'affichage de la liste des clients
         :return: None
