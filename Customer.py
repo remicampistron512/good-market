@@ -57,12 +57,16 @@ class Customer:
     @classmethod
     def print_customers(cls) -> None:
         """
-        Permet d'affichage de la liste des clients
+        Affiche la liste des clients passés aujourd'hui
         :return: None
         """
         if not cls.customers:
-            print("Aucun client passé aujourd'hui")
+            print("Aucun client n'est passé aujourd'hui.")
         else:
-            print("Liste des clients passé aujourd'hui :")
-            for client in cls.customers:
-                print(f"- {client}")
+            print(f"\nListe des {Customer.nb_customers()} clients passés aujourd'hui :")
+            print("-" * 40)
+            for i, client in enumerate(cls.customers, start=1):
+                print(f"{client.id_customer}. {client.firstname} {client.lastname}")
+            print("-" * 40)
+            print(f"Total : {cls.nb_customers()} client(s)\n")
+
