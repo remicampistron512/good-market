@@ -12,14 +12,14 @@ class Order:
     Classe représentant une commande
 
     Attributs
-        products: la liste des produits composant la commande
-        date: la date à laquelle la commande a été réalisée
         status: l'état de la commande "finished" ou "ongoing"
+        date: la date à laquelle la commande a été réalisée ici par défaut la date courante
+        line_orders: un élement (product) de la commande
     """
 
-    date: datetime
+
     status: str
-    total: float
+    date: datetime = field(default_factory=datetime.now)
     line_orders: List[Product] = field(default_factory=list)
 
     def add_line_order(self, product: Product) -> None:
@@ -27,18 +27,17 @@ class Order:
 
     def print_order(self) -> None:
         """
-        Permet d'affichage de la liste des produits
+        Permet l'affichage de la liste des produits de la commande
         """
         if not self.line_orders:
             print("Aucun produit enregistré")
         else:
-            print("Voici votre commande :")
+            print(f"{f'Commande du {self.date:%d/%m/%Y %H:%M}':^50}")
             for line_order in self.line_orders:
-                print(f"- {line_order.name} ({line_order.unit}) — {line_order.price:.2f} €")
+                print(f"- {line_order.name:<22} {line_order.stock:>3} {line_order.unit:<6} : {line_order.stock * line_order.price:>10.2f} €")
+            print("- "*25)
 
-    def total(self):
-        return sum(product.price for product in self.line_orders)
+            print(f"Total {self.compute_total():>42.2f} €")
 
-
-
-
+    def compute_total(self) -> float:
+        return sum(line_order.stock * line_order.price for line_order in self.line_orders)
