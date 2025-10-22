@@ -9,22 +9,22 @@ from typing import ClassVar, List
 @dataclass
 class Customer:
     """Classe représentant un client
-        — id_code : Identifiant du client
+        — id_customer : Identifiant du client
         – firstname : prénom du client
         — lastname : nom du client
     """
-    id_code: int
+    id_customer: int
     firstname: str
     lastname: str
     customers: ClassVar[List['Customer']] = []
 
-    def __init__(self,id_code: int, firstname: str, lastname: str):
+    def __init__(self, id_customer: int, firstname: str, lastname: str):
         """
          Permet la création d'un client
         :param firstname: Prenom du client
         :param lastname: Nom du client
         """
-        self.id_code = id_code
+        self.id_customer = id_customer
         self.firstname = firstname
         self.lastname = lastname
         Customer.customers.append(self)
@@ -41,7 +41,7 @@ class Customer:
         Permet de configurer l'affichage d'un client pour le développement
         :return: Prenom et nom du client
         """
-        return f"Customer({self.id_code}, {self.firstname}, {self.lastname})"
+        return f"Customer({self.id_customer}, {self.firstname}, {self.lastname})"
 
     @classmethod
     def print_customers(cls):
