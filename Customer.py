@@ -68,5 +68,4 @@ class Customer:
             for i, client in enumerate(cls.customers, start=1):
                 print(f"{client.id_customer}. {client.firstname} {client.lastname}")
             print("-" * 40)
-            print(f"Total : {cls.nb_customers()} client(s)\n")
 
