@@ -8,6 +8,7 @@ from Product import Product
 from Customer import Customer
 import uuid
 
+
 @dataclass
 class Order:
     """
@@ -20,7 +21,6 @@ class Order:
         date : la date à laquelle la commande a été réalisée, ici, par défaut la date courante
         line_orders : la liste des élements (Product) de la commande
     """
-
 
     status: str
     customer: Customer
@@ -38,11 +38,13 @@ class Order:
         if not self.line_orders:
             print("Aucun produit enregistré")
         else:
-            print(f"{f'{self.customer.firstname.title()} {self.customer.lastname.title()} voici votre commande du {self.date:%d/%m/%Y %H:%M}':^50}")
+            print(
+                f"{f'{self.customer.firstname.title()} {self.customer.lastname.title()} voici votre commande du {self.date:%d/%m/%Y %H:%M}':^50}")
             print(f"numéro de commande: {self.uid}")
             for line_order in self.line_orders:
-                print(f"- {line_order.name:<22} {line_order.stock:>3} {line_order.unit:<6} : {line_order.stock * line_order.price:>10.2f} €")
-            print("- "*25)
+                print(
+                    f"- {line_order.name:<22} {line_order.stock:>3} {line_order.unit:<6} : {line_order.stock * line_order.price:>10.2f} €")
+            print("- " * 25)
 
             print(f"Total {self.compute_total():>42.2f} €")
 
