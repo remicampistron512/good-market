@@ -19,9 +19,10 @@ class Order:
 
     date: datetime
     status: str
+    total: float
     line_orders: List[Product] = field(default_factory=list)
 
-    def add_line_order(self,product: Product) -> None:
+    def add_line_order(self, product: Product) -> None:
         self.line_orders.append(product)
 
     def print_order(self) -> None:
@@ -32,6 +33,12 @@ class Order:
             print("Aucun produit enregistré")
         else:
             print("Voici votre commande :")
-            for product in self.line_orders:
-                print(f"- {product}")
+            for line_order in self.line_orders:
+                print(f"- {line_order.name} ({line_order.unit}) — {line_order.price:.2f} €")
+
+    def total(self):
+        return sum(product.price for product in self.line_orders)
+
+
+
 
