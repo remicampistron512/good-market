@@ -46,7 +46,7 @@ class Customer:
 
 
     @classmethod
-    def create_customers(cls, id_customer, firstname, lastname) -> 'Customer':
+    def create_customer(cls, id_customer, firstname, lastname) -> 'Customer':
         """
         Permet de l'affichage du nombre de clients passés ce jour
         :return: nombre de clients passés ce jour
