@@ -17,3 +17,12 @@ class Customer:
 
     def __repr__(self):
         return f"Customer({self.firstName}, {self.lastName})"
+
+    @classmethod
+    def print_customers(cls):
+        if not cls.customers:
+            print("Aucun client passé aujourd'hui")
+        else:
+            print("Liste des clients passé aujourd'hui :")
+            for client in cls.customers:
+                print(f"- {client}")
