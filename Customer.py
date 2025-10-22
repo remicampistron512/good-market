@@ -21,6 +21,7 @@ class Customer:
     def __init__(self, id_customer: int, firstname: str, lastname: str) -> None:
         """
          Permet la création d'un client
+        :param id_customer: Identifiant du client
         :param firstname: Prenom du client
         :param lastname: Nom du client
         """
