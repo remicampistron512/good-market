@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from dataclasses import dataclass
+from typing import ClassVar, List
 
 @dataclass
 class Product:
@@ -21,3 +22,25 @@ class Product:
     stock: int
     price: float
     unit: str
+    products: ClassVar[List['Product']] = []
+
+
+    @classmethod
+    def print_products(cls):
+        """
+        Permet d'affichage de la liste des produits
+        """
+        if not cls.products:
+            print("Aucun produit enregistré")
+        else:
+            print("Voici la liste de produits :")
+            for product in cls.products:
+                print(f"- {product}")
+
+    @classmethod
+    def add_product(cls,product):
+        """
+        Ajoute un produit à la liste des produits
+        :param product: un objet product à ajouter
+        """
+        cls.products.append(product)
