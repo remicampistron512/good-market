@@ -8,7 +8,8 @@ class Product:
     """
     Classe représentant un produit
     """
-    name:str
+    id: int
+    name: str
     stock: int
     price: float
     unit: str
