@@ -4,6 +4,9 @@ from typing import ClassVar
 
 @dataclass
 class Inventory:
+    """
+    Permet de tenir un inventaire et de le mettre à jour
+    """
     # copie du stock pour pouvoir le modifier
     stock: list[Product] = field(default_factory=list)
 
@@ -31,11 +34,15 @@ class Inventory:
         Product(20, "Salsifis", 3, 2.50, "kg"),
     )
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         if not self.stock:
             self.stock = list(self.INITIAL_STOCK)
 
-    def update_stock(self,product):
+    def update_stock(self,product) -> None:
+        """
+        Met à jour l'inventaire quand l'utilisateur ajoute un produit à sa commande
+        :param product: Le produit ajouté à la commande
+        """
         for item in self.stock:
            if product.id == item.id:
                if  item.quantity == 0:
@@ -47,10 +54,13 @@ class Inventory:
 
 
 
-    def print_inventory(self):
+    def print_inventory(self) -> None:
+        """
+        Affiche l'inventaire
+        """
         print(f"voici l'état du stock")
         for item in self.stock:
-          print(f"- {item.name:<22} {item.quantity:>3} {item.unit:<6}")
+          print(f"- {item.id:<3}{item.name:<19} {item.quantity:>3} {item.unit:<6}")
 
 
 
