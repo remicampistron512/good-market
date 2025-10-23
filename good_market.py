@@ -7,10 +7,8 @@ from Order import Order
 from Inventory import Inventory
 
 
-def review():
-    id_customer = 1
-    id_product = 1
-    orders = []
+def review(id_customer : int, id_product : int, orders, inventory : Inventory) -> None:
+
     Customer.create_customer(id_customer=id_customer, firstname="Pierre", lastname="Dupont")
     Customer.create_customer(id_customer=id_customer + 1, firstname="Vanessa", lastname="Dubois")
     apple = Product(id=id_product, name="Pomme", quantity=8, price=1.50, unit="kg")
@@ -27,7 +25,6 @@ def review():
     order2.add_line_order(apple)
     orders.append(order2)
 
-    # --- Affichage global ---
     Customer.print_customers()
 
     print("\n=== Details des commandes des clients ===")
@@ -36,18 +33,21 @@ def review():
         print("\n")
 
     print("=== Stock Restant ===")
-    inventory = Inventory()
     inventory.print_inventory()
 
 
 def main():
+    id_customer = 1
+    id_product = 1
+    orders = []
+
+
     while True:
 
         print("\nVeuillez choisir une option :")
         print("1 - Passer une commande")
         print("2 - Voir le bilan de la journée")
         choice = input("Entrez votre choice (1 ou 2, ou 'QUIT' pour quitter) : ")
-
         if choice == '1':
             inventory = Inventory()
             current_customer = Customer(1, "remi", "campistron")
@@ -86,7 +86,7 @@ def main():
                     current_order.print_order()
 
         elif choice == '2':
-            review()
+            review(id_customer = id_customer, id_product = id_product, orders = orders, inventory = inventory)
 
         elif choice.upper() == 'QUIT':
             print("Au revoir !")
