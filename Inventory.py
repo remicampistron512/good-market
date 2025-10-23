@@ -46,7 +46,7 @@ class Inventory:
         for item in self.stock:
            if product.id == item.id:
                if  item.quantity == 0:
-                   print(f"Plus {product.name} disponible en stock, veuillez choisir un autre produit")
+                   print(f"Plus de {product.name} disponible en stock, veuillez choisir un autre produit")
                elif  item.quantity >= product.quantity:
                    item.quantity = item.quantity - product.quantity
                elif item.quantity <= product.quantity:
