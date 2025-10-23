@@ -3,10 +3,9 @@
 
 from datetime import datetime
 from dataclasses import dataclass, field
-from typing import List,Dict, Tuple
+from typing import List,Dict
 from Product import Product
 from Customer import Customer
-from Inventory import Inventory
 import uuid
 
 
