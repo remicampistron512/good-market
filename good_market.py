@@ -9,22 +9,6 @@ from Inventory import Inventory
 
 def review(id_customer : int, id_product : int, orders, inventory : Inventory) -> None:
 
-    Customer.create_customer(id_customer=id_customer, firstname="Pierre", lastname="Dupont")
-    Customer.create_customer(id_customer=id_customer + 1, firstname="Vanessa", lastname="Dubois")
-    apple = Product(id=id_product, name="Pomme", quantity=8, price=1.50, unit="kg")
-    pear = Product(id=id_product + 1, name="Poire", quantity=5, price=2.50, unit="kg")
-    Product.add_product(apple)
-    Product.add_product(pear)
-
-    order1 = Order(status="finished", customer=Customer.customers[0])
-    order1.add_line_order(apple)
-    order1.add_line_order(pear)
-    orders.append(order1)
-
-    order2 = Order(status="finished", customer=Customer.customers[1])
-    order2.add_line_order(apple)
-    orders.append(order2)
-
     Customer.print_customers()
 
     print("\n=== Details des commandes des clients ===")
@@ -85,6 +69,8 @@ def main():
                 if continue_shopping_choice == "q":
                     if current_order:
                         current_order.print_order()
+                        orders.append(current_order)
+                        Customer.create_customer(current_customer)
                     break
                 elif continue_shopping_choice == "c":
                     continue
