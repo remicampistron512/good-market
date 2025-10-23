@@ -33,7 +33,7 @@ def main():
         print("\nVeuillez choisir une option :")
         print("1 - Passer une commande")
         print("2 - Voir le bilan de la journée")
-        choice = input("Entrez votre choice (1 ou 2, ou 'QUIT' pour quitter) : ")
+        choice = input("Entrez votre choix (1 ou 2, ou 'QUIT' pour quitter) : ")
         if choice == '1':
 
             first_name_choice = user_input.is_non_empty("Entrez votre prénom : ")
@@ -46,10 +46,10 @@ def main():
 
                 product_choice = input("Choisissez un produit par son id : ")
                 if product_choice == "" or not product_choice.isdigit():
-                    print("merci de rentrer une id de produit valide")
+                    print("Merci de rentrer une id de produit valide")
                     continue
                 elif product_choice.isdigit() and not any(product.id == int(product_choice) for product in inventory.stock):
-                    print("merci de rentrer une id de produit valide")
+                    print("Merci de rentrer une id de produit valide")
                     continue
 
                 quantity_choice = user_input.is_int("Quelle quantité ? :")
