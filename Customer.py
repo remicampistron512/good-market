@@ -68,4 +68,3 @@ class Customer:
             for i, client in enumerate(cls.customers, start=1):
                 print(f"{client.id_customer}. {client.firstname} {client.lastname}")
             print("-" * 40)
-
