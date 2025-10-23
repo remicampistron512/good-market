@@ -38,7 +38,14 @@ class Inventory:
     def update_stock(self,product):
         for item in self.stock:
            if product.id == item.id:
-                item.quantity = item.quantity - product.quantity
+               if  item.quantity == 0:
+                   print(f"Plus {product.name} disponible en stock, veuillez choisir un autre produit")
+               elif  item.quantity >= product.quantity:
+                   item.quantity = item.quantity - product.quantity
+               elif item.quantity <= product.quantity:
+                   print (f"pas assez de {product.name} disponible en stock, veuillez réduire la quantité")
+
+
 
     def print_inventory(self):
         print(f"voici l'état du stock")
