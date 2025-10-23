@@ -28,7 +28,6 @@ def review():
     orders.append(order2)
 
     # --- Affichage global ---
-    print("\n=== CLIENTS ===")
     Customer.print_customers()
 
     print("\n=== Details des commandes des clients ===")
