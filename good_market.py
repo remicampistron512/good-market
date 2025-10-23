@@ -24,7 +24,7 @@ def main():
     id_customer = 1
     id_product = 1
     orders = []
-
+    inventory = Inventory()
 
     while True:
 
@@ -33,10 +33,10 @@ def main():
         print("2 - Voir le bilan de la journée")
         choice = input("Entrez votre choice (1 ou 2, ou 'QUIT' pour quitter) : ")
         if choice == '1':
-            inventory = Inventory()
+
             first_name_choice = input("Entrez votre prénom : ")
             last_name_choice = input("Entrez votre nom : ")
-            current_customer = Customer(id_customer + 1, first_name_choice, last_name_choice)
+            current_customer = Customer(id_customer, first_name_choice, last_name_choice)
             current_order = Order("ongoing", current_customer)
             while True:
                 print(f"Bienvenue au bon marché {current_customer.firstname} {current_customer.lastname}")
@@ -74,6 +74,7 @@ def main():
                         current_order.print_order()
                         orders.append(current_order)
                         Customer.create_customer(current_customer)
+                        id_customer+=1
                     break
                 elif continue_shopping_choice == "c":
                     continue
