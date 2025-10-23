@@ -5,6 +5,7 @@ from Customer import Customer
 from Product import Product
 from Order import Order
 from Inventory import Inventory
+from UserInput import UserInput
 
 
 def review(orders, inventory : Inventory) -> None:
@@ -21,6 +22,7 @@ def review(orders, inventory : Inventory) -> None:
 
 
 def main():
+    user_input = UserInput()
     id_customer = 1
     orders = []
     inventory = Inventory()
@@ -34,8 +36,8 @@ def main():
         choice = input("Entrez votre choice (1 ou 2, ou 'QUIT' pour quitter) : ")
         if choice == '1':
 
-            first_name_choice = input("Entrez votre prénom : ")
-            last_name_choice = input("Entrez votre nom : ")
+            first_name_choice = user_input.is_non_empty("Entrez votre prénom : ")
+            last_name_choice = user_input.is_non_empty("Entrez votre nom : ")
             current_customer = Customer(id_customer, first_name_choice, last_name_choice)
             current_order = Order("ongoing", current_customer)
             while True:
@@ -50,10 +52,8 @@ def main():
                     print("merci de rentrer une id de produit valide")
                     continue
 
-                quantity_choice = input("Quelle quantité ? : ")
-                if not quantity_choice.isdigit():
-                    print("merci de rentrer une quantité valide")
-                    continue
+                quantity_choice = user_input.is_int("Quelle quantité ? :")
+
 
                 current_product = ""
 
