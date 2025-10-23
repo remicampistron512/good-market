@@ -33,7 +33,6 @@ def review(id_customer : int, id_product : int, orders, inventory : Inventory) -
         print("\n")
 
     print("=== Stock Restant ===")
-    inventory = Inventory()
     inventory.print_inventory()
 
 
@@ -49,9 +48,8 @@ def main():
         print("1 - Passer une commande")
         print("2 - Voir le bilan de la journée")
         choice = input("Entrez votre choice (1 ou 2, ou 'QUIT' pour quitter) : ")
-        inventory = Inventory()
         if choice == '1':
-
+            inventory = Inventory()
             current_customer = Customer(1, "remi", "campistron")
             current_order = Order("ongoing", current_customer)
             while True:
