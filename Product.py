@@ -19,7 +19,7 @@ class Product:
     """
     id: int
     name: str
-    stock: int
+    quantity: int
     price: float
     unit: str
     products: ClassVar[List['Product']] = []
