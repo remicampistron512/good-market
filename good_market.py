@@ -54,8 +54,15 @@ def main():
             current_order = Order("ongoing", current_customer)
             while True:
                 inventory.print_inventory()
-                product_choice = input("Choisissez un produit par son id ")
+                product_choice = input("Choisissez un produit par son id")
+
+                if product_choice == "" or  not any(product.id == int(product_choice) for product in inventory.stock):
+                    print("merci de rentrer une id de produit valide")
+                    continue
                 quantity_choice = input("Quelle quantité ?")
+                if not quantity_choice.isdigit():
+                    print("merci de rentrer une quantité valide")
+                    continue
                 current_product = ""
                 if product_choice:
                     for item in inventory.stock:
@@ -64,10 +71,14 @@ def main():
                                                       price=item.price,
                                                       unit=item.unit)
                             current_order.add_line_order(current_product)
+
                 inventory.update_stock(current_product)
 
                 continue_shopping_choice = input("Continuer mes achats (c) / voir ma commande (v) / quitter (q) ?")
+
                 if continue_shopping_choice == "q":
+                    if current_order:
+                        current_order.print_order()
                     break
                 elif continue_shopping_choice == "c":
                     continue
