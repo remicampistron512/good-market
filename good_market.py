@@ -16,7 +16,7 @@ def main():
 
         if choice == '1':
             print("CODE REMI")
-            #TESTS A MODIFIER
+            #TESTS
             id_customer += 1
             Customer.create_customer(id_customer,"Pierre","Dupont")
             id_customer += 1
@@ -25,6 +25,11 @@ def main():
             Customer.create_customer(id_customer,"Gustave","Fernand")
             continue
         elif choice == '2':
+            Customer.create_customer(id_customer, "Pierre", "Dupont")
+            id_customer += 1
+            Customer.create_customer(id_customer, "Vanessa","Dubois")  # A MODIFIER PAR DES INPUTS FAIT A DES FINS DE TESTS
+            id_customer += 1
+            Customer.create_customer(id_customer, "Gustave", "Fernand")
             Customer.print_customers()
             Product(1,"Apple", 8,1.50,"kg")
             Product.print_products()

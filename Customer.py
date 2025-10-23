@@ -18,17 +18,6 @@ class Customer:
     lastname: str
     customers: ClassVar[List['Customer']] = []
 
-    def __init__(self, id_customer: int, firstname: str, lastname: str) -> None:
-        """
-         Permet la création d'un client
-        :param id_customer: Identifiant du client
-        :param firstname: Prenom du client
-        :param lastname: Nom du client
-        """
-        self.id_customer = id_customer
-        self.firstname = firstname
-        self.lastname = lastname
-        Customer.customers.append(self)
 
     def __str__(self) -> str:
         """
@@ -52,6 +41,7 @@ class Customer:
         :return: nombre de clients passés ce jour
         """
         customer = Customer(id_customer, firstname, lastname)
+        cls.customers.append(customer)
         return customer
 
 
