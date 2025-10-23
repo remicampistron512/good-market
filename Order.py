@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from typing import List
 from Product import Product
 from Customer import Customer
+from Inventory import Inventory
 import uuid
 
 
@@ -43,10 +44,10 @@ class Order:
             print(f"numéro de commande: {self.uid}")
             for line_order in self.line_orders:
                 print(
-                    f"- {line_order.name:<22} {line_order.stock:>3} {line_order.unit:<6} : {line_order.stock * line_order.price:>10.2f} €")
+                    f"- {line_order.name:<22} {line_order.quantity:>3} {line_order.unit:<6} : {line_order.quantity * line_order.price:>10.2f} €")
             print("- " * 25)
 
             print(f"Total {self.compute_total():>42.2f} €")
 
     def compute_total(self) -> float:
-        return sum(line_order.stock * line_order.price for line_order in self.line_orders)
+        return sum(line_order.quantity * line_order.price for line_order in self.line_orders)
