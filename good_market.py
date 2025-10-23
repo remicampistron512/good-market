@@ -7,7 +7,7 @@ from Order import Order
 from Inventory import Inventory
 
 
-def review(id_customer : int, id_product : int, orders, inventory : Inventory) -> None:
+def review(orders, inventory : Inventory) -> None:
 
     Customer.print_customers()
 
@@ -22,9 +22,9 @@ def review(id_customer : int, id_product : int, orders, inventory : Inventory) -
 
 def main():
     id_customer = 1
-    id_product = 1
     orders = []
     inventory = Inventory()
+
 
     while True:
 
@@ -82,7 +82,7 @@ def main():
                     current_order.print_order()
 
         elif choice == '2':
-            review(id_customer = id_customer, id_product = id_product, orders = orders, inventory = inventory)
+            review(orders = orders, inventory = inventory)
 
         elif choice.upper() == 'QUIT':
             print("Au revoir !")
