@@ -31,8 +31,8 @@ def main():
             Customer.create_customer(id_customer = id_customer, firstname = "Pierre", lastname = "Dupont")
             Customer.create_customer(id_customer = id_customer + 1, firstname = "Vanessa", lastname = "Dubois")
             Customer.create_customer(id_customer = id_customer + 2, firstname="Gustave", lastname = "Fernand")
-            apple = Product(id = id_product, name = "Pomme", stock = 8, price = 1.50, unit = "kg")
-            pear = Product(id = id_product + 1, name = "Poire", stock = 5, price = 2.50, unit = "kg")
+            apple = Product(id = id_product, name = "Pomme", quantity = 8, price = 1.50, unit = "kg")
+            pear = Product(id = id_product + 1, name = "Poire", quantity = 5, price = 2.50, unit = "kg")
             Product.add_product(apple)
             Product.add_product(pear)
 
