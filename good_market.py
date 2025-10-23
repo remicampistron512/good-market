@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from Customer import *
-from Product import *
-from Order import *
+from Customer import Customer
+from Product import Product
+from Order import Order
+from Inventory import Inventory
 
 
 def main():
@@ -21,21 +22,22 @@ def main():
             print("CODE REMI")
             #TESTS
             id_customer += 1
-            Customer.create_customer(id_customer,"Pierre","Dupont")
+            Customer.create_customer(id_customer, "Pierre", "Dupont")
             id_customer += 1
-            Customer.create_customer(id_customer,"Vanessa","Dubois") # A MODIFIER PAR DES INPUTS FAIT A DES FINS DE TESTS
+            Customer.create_customer(id_customer, "Vanessa",
+                                     "Dubois")  # A MODIFIER PAR DES INPUTS FAIT A DES FINS DE TESTS
             id_customer += 1
-            Customer.create_customer(id_customer,"Gustave","Fernand")
+            Customer.create_customer(id_customer, "Gustave", "Fernand")
             continue
         elif choice == '2':
-            Customer.create_customer(id_customer = id_customer, firstname = "Pierre", lastname = "Dupont")
-            Customer.create_customer(id_customer = id_customer + 1, firstname = "Vanessa", lastname = "Dubois")
-            Customer.create_customer(id_customer = id_customer + 2, firstname="Gustave", lastname = "Fernand")
-            apple = Product(id = id_product, name = "Pomme", quantity = 8, price = 1.50, unit = "kg")
-            pear = Product(id = id_product + 1, name = "Poire", quantity = 5, price = 2.50, unit = "kg")
+
+            Customer.create_customer(id_customer=id_customer, firstname="Pierre", lastname="Dupont")
+            Customer.create_customer(id_customer=id_customer + 1, firstname="Vanessa", lastname="Dubois")
+            Customer.create_customer(id_customer=id_customer + 2, firstname="Gustave", lastname="Fernand")
+            apple = Product(id=id_product, name="Pomme", quantity=8, price=1.50, unit="kg")
+            pear = Product(id=id_product + 1, name="Poire", quantity=5, price=2.50, unit="kg")
             Product.add_product(apple)
             Product.add_product(pear)
-
 
             order1 = Order(status="finished", customer=Customer.customers[0])
             order1.add_line_order(apple)
@@ -45,7 +47,6 @@ def main():
             order2 = Order(status="finished", customer=Customer.customers[1])
             order2.add_line_order(apple)
             orders.append(order2)
-
 
             # --- Affichage global ---
             print("\n=== CLIENTS ===")
@@ -57,6 +58,10 @@ def main():
             print("\n=== COMMANDES ===")
             for order in orders:
                 order.print_order()
+
+            print("\n=== STOCK RESTANT ===")
+            inventory = Inventory()
+            inventory.print_inventory()
 
             continue
 
