@@ -3,10 +3,13 @@
 
 from Customer import *
 from Product import *
+from Order import *
 
 
 def main():
-    id_customer = 0
+    id_customer = 1
+    id_product = 1
+    orders = []
     while True:
 
         print("\nVeuillez choisir une option :")
@@ -28,10 +31,32 @@ def main():
             Customer.create_customer(id_customer, "Pierre", "Dupont")
             Customer.create_customer(id_customer + 1, "Vanessa", "Dubois")
             Customer.create_customer(id_customer + 2, "Gustave", "Fernand")
+            apple = Product(id_product, "Pomme", 8, 1.50, "kg")
+            pear = Product(id_product + 1, "Poire", 5, 2.50, "kg")
+            Product.add_product(apple)
+            Product.add_product(pear)
 
+
+            order1 = Order(status="finished", customer=Customer.customers[0])
+            order1.add_line_order(apple)
+            order1.add_line_order(pear)
+
+            orders.append(order1)
+
+
+            # --- Affichage global ---
+            print("\n=== CLIENTS ===")
             Customer.print_customers()
-            Product(1,"Apple", 8,1.50,"kg")
+
+            print("\n=== PRODUITS ===")
             Product.print_products()
+
+            print("\n=== COMMANDES ===")
+            for order in orders:
+                order.print_order()
+
+            continue
+
         elif choice.upper() == 'QUIT':
             print("Au revoir !")
             break
