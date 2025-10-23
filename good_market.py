@@ -67,7 +67,7 @@ def main():
 
                 inventory.update_stock(current_product)
 
-                continue_shopping_choice = input("Continuer mes achats (c) / voir ma commande (v) / terminer mes achats (q) ?")
+                continue_shopping_choice = input("Continuer mes achats (c) / voir ma commande (v) / terminer mes achats (q) ? : ")
 
                 if continue_shopping_choice == "q":
                     if current_order:
