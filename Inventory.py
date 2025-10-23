@@ -4,10 +4,10 @@ from typing import ClassVar
 
 @dataclass
 class Inventory:
-    # Instance state you will mutate
+    # copie du stock pour pouvoir le modifier
     stock: list[Product] = field(default_factory=list)
 
-    # Class-level constant (tuple of tuples)
+    # Constante de classe tuple de tuples
     INITIAL_STOCK: ClassVar[tuple[Product, ...]] = (
         Product(1, "Clémentine", 6, 2.90, "kg"),
         Product(2, "Datte", 4, 7.00, "kg"),
