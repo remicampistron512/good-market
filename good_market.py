@@ -50,20 +50,30 @@ def main():
         choice = input("Entrez votre choice (1 ou 2, ou 'QUIT' pour quitter) : ")
 
         if choice == '1':
+            inventory = Inventory()
+            current_customer = Customer(1, "remi", "campistron")
+            current_order = Order("ongoing", current_customer)
             while True:
-                inventory = Inventory()
                 inventory.print_inventory()
-                product_choice = input("Choisissez un produit par son id (q pour quitter)")
-                quantity_choice = input("Rentrer une quantité (q pour quitter)")
-                if product_choice == "q" or quantity_choice == "q":
-                    break
+                product_choice = input("Choisissez un produit par son id ")
+                quantity_choice = input("Quelle quantité ?")
                 current_product = ""
                 if product_choice:
                     for item in inventory.stock:
                         if int(product_choice) == item.id:
-                            current_product = Product(id=item.id, name=item.name, quantity=int(quantity_choice), price=1.50,
-                                                      unit="kg")
-                    inventory.update_stock(current_product)
+                            current_product = Product(id=item.id, name=item.name, quantity=int(quantity_choice),
+                                                      price=item.price,
+                                                      unit=item.unit)
+                            current_order.add_line_order(current_product)
+                inventory.update_stock(current_product)
+
+                continue_shopping_choice = input("Continuer mes achats (c) / voir ma commande (v) / quitter (q) ?")
+                if continue_shopping_choice == "q":
+                    break
+                elif continue_shopping_choice == "c":
+                    continue
+                elif continue_shopping_choice == "v" :
+                    current_order.print_order()
 
         elif choice == '2':
             review()
