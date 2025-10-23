@@ -33,14 +33,13 @@ class Customer:
         """
         return f"Customer({self.id_customer}, {self.firstname}, {self.lastname})"
 
-
     @classmethod
-    def create_customer(cls, id_customer, firstname, lastname) -> 'Customer':
+    def create_customer(cls, customer: 'Customer') -> 'Customer':
         """
-        Permet de l'affichage du nombre de clients passés ce jour
-        :return: nombre de clients passés ce jour
+        Ajoute un objet Customer à la liste des clients.
+        :param customer: Instance de Customer à ajouter
+        :return: L'objet Customer ajouté
         """
-        customer = Customer(id_customer, firstname, lastname)
         cls.customers.append(customer)
         return customer
 
