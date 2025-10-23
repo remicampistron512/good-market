@@ -7,7 +7,10 @@ from Order import Order
 from Inventory import Inventory
 
 
-def review(id_customer, id_product, orders):
+def review():
+    id_customer = 1
+    id_product = 1
+    orders = []
     Customer.create_customer(id_customer=id_customer, firstname="Pierre", lastname="Dupont")
     Customer.create_customer(id_customer=id_customer + 1, firstname="Vanessa", lastname="Dubois")
     apple = Product(id=id_product, name="Pomme", quantity=8, price=1.50, unit="kg")
@@ -39,9 +42,6 @@ def review(id_customer, id_product, orders):
 
 
 def main():
-    id_customer = 1
-    id_product = 1
-    orders = []
     while True:
 
         print("\nVeuillez choisir une option :")
@@ -66,7 +66,7 @@ def main():
                     inventory.update_stock(current_product)
 
         elif choice == '2':
-            review(id_customer, id_product, orders)
+            review()
 
         elif choice.upper() == 'QUIT':
             print("Au revoir !")
