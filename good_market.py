@@ -19,16 +19,21 @@ def main():
         choice = input("Entrez votre choice (1 ou 2, ou 'QUIT' pour quitter) : ")
 
         if choice == '1':
-            print("CODE REMI")
-            #TESTS
-            id_customer += 1
-            Customer.create_customer(id_customer, "Pierre", "Dupont")
-            id_customer += 1
-            Customer.create_customer(id_customer, "Vanessa",
-                                     "Dubois")  # A MODIFIER PAR DES INPUTS FAIT A DES FINS DE TESTS
-            id_customer += 1
-            Customer.create_customer(id_customer, "Gustave", "Fernand")
-            continue
+            while True:
+                inventory = Inventory()
+                inventory.print_inventory()
+                product_choice = input("Choisissez un produit par son id (q pour quitter)")
+                quantity_choice = input("Rentrer une quantité (q pour quitter)")
+                if product_choice == "q" or quantity_choice == "q":
+                    break
+                current_product = ""
+                if product_choice:
+                    for item in inventory.stock:
+                        if int(product_choice) == item.id:
+                            current_product = Product(id=item.id, name=item.name, quantity=int(quantity_choice), price=1.50,
+                                                      unit="kg")
+                    inventory.update_stock(current_product)
+
         elif choice == '2':
 
             Customer.create_customer(id_customer=id_customer, firstname="Pierre", lastname="Dupont")
