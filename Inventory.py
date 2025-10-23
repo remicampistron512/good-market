@@ -34,3 +34,17 @@ class Inventory:
     def __post_init__(self):
         if not self.stock:
             self.stock = list(self.INITIAL_STOCK)
+
+    def update_stock(self,product):
+        for item in self.stock:
+           if product.id == item.id:
+                item.quantity = item.quantity - product.quantity
+
+    def print_inventory(self):
+        print(f"voici l'état du stock")
+        for item in self.stock:
+          print(f"- {item.name:<22} {item.quantity:>3} {item.unit:<6}")
+
+
+
+
