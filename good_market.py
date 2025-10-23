@@ -34,9 +34,12 @@ def main():
         choice = input("Entrez votre choice (1 ou 2, ou 'QUIT' pour quitter) : ")
         if choice == '1':
             inventory = Inventory()
-            current_customer = Customer(1, "remi", "campistron")
+            first_name_choice = input("Entrez votre prénom : ")
+            last_name_choice = input("Entrez votre nom : ")
+            current_customer = Customer(id_customer + 1, first_name_choice, last_name_choice)
             current_order = Order("ongoing", current_customer)
             while True:
+                print(f"Bienvenue au bon marché {current_customer.firstname} {current_customer.lastname}")
                 inventory.print_inventory()
 
                 product_choice = input("Choisissez un produit par son id : ")
