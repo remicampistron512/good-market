@@ -52,14 +52,12 @@ def main():
             print("\n=== CLIENTS ===")
             Customer.print_customers()
 
-            print("\n=== PRODUITS ===")
-            Product.print_products()
-
             print("\n=== COMMANDES ===")
             for order in orders:
                 order.print_order()
+                print("\n")
 
-            print("\n=== STOCK RESTANT ===")
+            print("=== STOCK RESTANT ===")
             inventory = Inventory()
             inventory.print_inventory()
 
