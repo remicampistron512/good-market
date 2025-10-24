@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+from typing import  List
 
 from Customer import Customer
 from Product import Product
@@ -8,7 +9,7 @@ from Inventory import Inventory
 from UserInput import UserInput
 
 
-def review(orders, inventory: Inventory) -> None:
+def review(orders: List[Order], inventory: Inventory) -> None:
     """
     Permet d'afficher le bilan de la journée
     :param orders: liste des commandes
