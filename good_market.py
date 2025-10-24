@@ -54,14 +54,29 @@ def main():
 
 
 def order(id_customer: int, inventory: Inventory, orders: list, user_input: UserInput):
+    """
+    Gère les différentes étapes de commandes utilisateur
+    :param id_customer: l'identifiant de l'utilisateur
+    :param inventory: un objet inventaire pour garder trace des achats dans le stock
+    :param orders: la liste des commandes
+    :param user_input: un objet UserInput pour initialiser la gestion des inputs
+    """
+
+    # L'utilisateur rentre son nom prénom
     first_name_choice = user_input.is_non_empty("Entrez votre prénom : ")
     last_name_choice = user_input.is_non_empty("Entrez votre nom : ")
+
+    # L'utilisateur est enregistré dans la liste des clients
     current_customer = Customer(id_customer, first_name_choice, last_name_choice)
+
+    # Créé une nouvelle commande associée à l'utilisateur
     current_order = Order("ongoing", current_customer)
     while True:
         print(f"Bienvenue au bon marché {current_customer.firstname} {current_customer.lastname}")
+
         inventory.print_inventory()
 
+        # L'utilisateur choisit un produit
         product_choice = input("Choisissez un produit par son id : ")
         if product_choice == "" or not product_choice.isdigit():
             print("Merci de rentrer une id de produit valide")
@@ -74,6 +89,7 @@ def order(id_customer: int, inventory: Inventory, orders: list, user_input: User
 
         current_product = ""
 
+        # Met à jour la commande
         if product_choice:
             for item in inventory.stock:
                 if int(product_choice) == item.id:
@@ -82,11 +98,14 @@ def order(id_customer: int, inventory: Inventory, orders: list, user_input: User
                                               unit=item.unit)
                     current_order.add_line_order(current_product)
 
+        # Met à jour l'inventaire
         inventory.update_stock(current_product)
 
         continue_shopping_choice = input(
             "Continuer mes achats (c) / voir ma commande (v) / terminer mes achats (q) ? : ")
 
+        # L'utilisateur quitte le menu commande, affiche un récapitulatif de sa commande, et met à jour la liste des
+        # commandes.
         if continue_shopping_choice == "q":
             if current_order:
                 current_order.print_order()
@@ -94,8 +113,10 @@ def order(id_customer: int, inventory: Inventory, orders: list, user_input: User
                 Customer.create_customer(current_customer)
                 id_customer += 1
             break
+        # l'utilisateur continue les achats
         elif continue_shopping_choice == "c":
             continue
+        # l'utilisateur affiche sa commande
         elif continue_shopping_choice == "v":
             current_order.print_order()
 
