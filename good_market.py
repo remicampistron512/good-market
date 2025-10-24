@@ -56,7 +56,7 @@ def main() -> None:
             print("Choix invalide. Veuillez entrer 1, 2 ou 'QUIT' pour quitter.")
 
 
-def order(id_customer: int, inventory: Inventory, orders: list, user_input: UserInput):
+def order(id_customer: int, inventory: Inventory, orders: list, user_input: UserInput) -> None:
     """
     Gère les différentes étapes de commandes utilisateur
     :param id_customer: l'identifiant de l'utilisateur
