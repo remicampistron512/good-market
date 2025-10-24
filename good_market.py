@@ -9,6 +9,12 @@ from UserInput import UserInput
 
 
 def review(orders, inventory : Inventory) -> None:
+    """
+    Permet d'afficher le bilan de la journée
+    :param orders: liste des commandes
+    :param inventory: liste du stock restant
+    :return: None
+    """
 
     Customer.print_customers()
 
