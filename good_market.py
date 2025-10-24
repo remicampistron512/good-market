@@ -16,14 +16,17 @@ def review(orders, inventory: Inventory) -> None:
     :return: None
     """
 
+    # Permet d'afficher la liste de clients passés aujourd'hui
     Customer.print_customers()
 
     print("\n=== Details des commandes des clients ===")
+    # Permet d'afficher la liste des commandes passés aujourd'hui
     for order in orders:
         order.print_order()
         print("\n")
 
     print("=== Stock Restant ===")
+    # Permet d'afficher le stock restant
     inventory.print_inventory()
 
 
