@@ -29,6 +29,10 @@ class Order:
     line_orders: List[Product] = field(default_factory=list)
 
     def add_line_order(self, product: Product) -> None:
+        """
+        Ajoute un produit en tant qu'élément de commande
+        :param product: le produit que l'on souhaite ajouter
+        """
         self.line_orders.append(product)
 
     def print_order(self) -> None:
@@ -54,6 +58,10 @@ class Order:
             print(f"{'Total':>37} : {self.compute_total():>8.2f} €")
 
     def compute_total(self) -> float:
+        """
+        Calcule le total du coût d'un élément de commande selon son poids/nb de pièces
+        :return: le total calculé
+        """
         return sum(line_order.quantity * line_order.price for line_order in self.line_orders)
 
     def aggregate_lines(self) -> Dict[int, dict]:
