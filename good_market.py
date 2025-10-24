@@ -88,7 +88,7 @@ def order(id_customer: int, inventory: Inventory, orders: list, user_input: User
             print("Merci de rentrer une id de produit valide")
             continue
 
-        quantity_choice = user_input.is_int("Quelle quantité ? :")
+        quantity_choice = user_input.is_int("Quelle quantité ? : ")
 
         current_product = ""
 
