@@ -4,7 +4,7 @@
 
 Ce programme simule la gestion des ventes dans un primeur nommé « Au bon marché », qui vend des fruits et légumes de saison, soit à la pièce, soit au kilo. Le stock est initialisé avec des quantités et des prix pour chaque produit.
 
-Le programme permet  :
+Le programme permet :
 
 La gestion des clients et de leurs achats.
 
@@ -41,7 +41,7 @@ Affichage du stock restant de chaque fruit et légume
 Le stock initial est le suivant :
 
 | Produit            | Stock     | Prix           |
-| ------------------ | --------- | -------------- |
+|--------------------|-----------|----------------|
 | Clémentine         | 6 kg      | 2,90 € / kg    |
 | Datte              | 4 kg      | 7,00 € / kg    |
 | Grenade            | 3 kg      | 3,50 € / kg    |
