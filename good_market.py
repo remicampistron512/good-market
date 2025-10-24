@@ -21,8 +21,8 @@ def review(orders, inventory: Inventory) -> None:
 
     print("\n=== Details des commandes des clients ===")
     # Permet d'afficher la liste des commandes passés aujourd'hui
-    for order in orders:
-        order.print_order()
+    for command_order in orders:
+        command_order.print_order()
         print("\n")
 
     print("=== Stock Restant ===")
@@ -30,7 +30,7 @@ def review(orders, inventory: Inventory) -> None:
     inventory.print_inventory()
 
 
-def main():
+def main() -> None:
     user_input = UserInput()
     id_customer = 1
     orders = []
