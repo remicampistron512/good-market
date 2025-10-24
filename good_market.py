@@ -69,7 +69,7 @@ def order(id_customer: int, inventory: Inventory, orders: list, user_input: User
     first_name_choice = user_input.is_non_empty("Entrez votre prénom : ")
     last_name_choice = user_input.is_non_empty("Entrez votre nom : ")
 
-    # L'utilisateur est enregistré dans la liste des clients
+    # Créé une nouvelle instance de Costumer associé à l'utilisateur courant
     current_customer = Customer(id_customer, first_name_choice, last_name_choice)
 
     # Créé une nouvelle commande associée à l'utilisateur
